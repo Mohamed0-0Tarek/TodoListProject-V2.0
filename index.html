@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Todo list</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <script
+            src="https://kit.fontawesome.com/9630ca491a.js"
+            crossorigin="anonymous"
+        ></script>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div
+            class="timer-container border-radius"
+            style="
+                background-color: rgba(20, 234, 9, 0.603);
+                justify-items: center;
+                margin-top: 60px;
+                width: 70%;
+            "
+        >
+            <h1 id="timer">2:15:12</h1>
+        </div>
+        <!--Main div-->
+        <div
+            class="border-radius"
+            style="width: 70%; margin-top: 20px; background-color: #e9e9e7"
+        >
+            <!--Header div-->
+            <div
+                class=""
+                style="
+                    padding: 3px;
+                    border-top-left-radius: 20px;
+                    border-top-right-radius: 20px;
+                    text-align: center;
+                    background-color: #522e91;
+                "
+            >
+                <h1 style="display: inline">مهامي</h1>
+                <button
+                    onclick="showPopupDiv()"
+                    id="addTask"
+                    class="circular"
+                    style="
+                        margin-right: 2px;
+                        margin-top: 2px;
+                        float: right;
+                        background-color: #fff;
+                    "
+                >
+                    <i style="color: #522e91" class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+            <!--/Header div-->
+            <!--Body div-->
+            <div style="padding: 10px">
+                <!--Notes div-->
+                <div id="tasksContainer">
+                    <!--Note div-->
+                    <div class="note">
+                        <!--Buttons -->
+                        <div style="color: #fff">
+                            <button class="circular options edit">
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+                            <button class="circular options check">
+                                <i class="fa-solid fa-check"></i>
+                            </button>
+                            <button class="circular options delete">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
+                        <!--/Buttons -->
+                        <!--Note details -->
+                        <div>
+                            <h5 class="todoText" style="margin: 2px">
+                                ضرب إياد
+                            </h5>
+                            <h5 class="date" style="margin: 2px">
+                                2/20/2025
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </h5>
+                            <h5 class="date" style="margin: 2px">
+                                Deadline: 2:00 PM
+                                <i class="fa-solid fa-clock"></i>
+                            </h5>
+                        </div>
+                        <!--/Note details -->
+                    </div>
+                    <!--/Note div-->
+                    <!--Note div-->
+                    <div class="note">
+                        <!--Buttons -->
+                        <div style="color: #fff">
+                            <button class="circular options edit">
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+                            <button class="circular options check">
+                                <i class="fa-solid fa-check"></i>
+                            </button>
+                            <button class="circular options delete">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
+                        <!--/Buttons -->
+                        <!--Note details -->
+                        <div>
+                            <h5 class="todoText" style="margin: 2px">
+                                ضرب إياد
+                            </h5>
+                            <h5 style="margin: 2px">
+                                2/20/2025
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </h5>
+                        </div>
+                        <!--/Note details -->
+                    </div>
+                    <!--/Note div-->
+                    <!--Note div-->
+                    <div class="note">
+                        <!--Buttons -->
+                        <div style="color: #fff">
+                            <button class="circular options edit">
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+                            <button class="circular options check">
+                                <i class="fa-solid fa-check"></i>
+                            </button>
+                            <button class="circular options delete">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
+                        <!--/Buttons -->
+                        <!--Note details -->
+                        <div>
+                            <h5 class="todoText" style="margin: 2px">
+                                ضرب إياد
+                            </h5>
+                            <h5 style="margin: 2px">
+                                2/20/2025
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </h5>
+                        </div>
+                        <!--/Note details -->
+                    </div>
+                    <!--/Note div-->
+                </div>
+                <!--/Notes div-->
+            </div>
+            <!--/Body div-->
+        </div>
+        <!--/Main div-->
+        <!--Popup div-->
+        <div
+            id="popup"
+            class="popup"
+            style="
+                display: none;
+                height: 100%;
+                width: 100%;
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                background-color: rgba(35, 41, 41, 0.6);
+                justify-content: center;
+            "
+        >
+            <div class="main-container border-radius">
+                <div
+                    class="header"
+                    style="
+                        text-align: center;
+                        width: 100%;
+                        background-color: rgba(20, 234, 9, 0.603);
+                        border-top-left-radius: 20px;
+                        border-top-right-radius: 20px;
+                    "
+                >
+                    <h1 style="margin-top: 0px; color: white">New Task</h1>
+                </div>
+
+                <label for="title-input" style="color: white; font-size: 20px ;font-style: bold;"
+                    >Task Title</label
+                >
+                <input
+                    id="title-input"
+                    class="border-radius"
+                    style="
+                        text-align: center;
+                        margin-top: 5px;
+                        padding: 5px;
+                        width: 80%;
+                        height: 30px;
+                        border: none;
+                        display: block;
+                    "
+                    type="text"
+                    name=""
+                    id=""
+                />
+                <label for="priority-input" style="color: white; font-size: 20px"
+                    >Task Priority</label
+                >
+                <div class="priorities">
+                    <input
+                        type="radio"
+                        name="priority"
+                        id="high"
+                        value="high"
+                    />
+                    <label for="high">High</label>
+                    <input
+                        type="radio"
+                        name="priority"
+                        id="medium"
+                        value="medium"
+                    />
+                    <label for="medium">Medium</label>
+                    <input
+                        type="radio"
+                        name="priority"
+                        id="low"
+                        value="low"
+                    />
+                    <label for="low">Low</label>
+                </div>
+                
+                <label for="dead-time-input" style="color: white; font-size: 20px"
+                    >Task Deadline</label
+                >
+                <input
+                    id="dead-time-input"
+                    name="dead-time-input"
+                    type="time"
+                    class="border-radius"
+                    style="
+                        text-align: center;
+                        margin-top: 5px;
+                        padding: 5px;
+                        width: 80%;
+                        height: 30px;
+                        border: none;
+                        display: block;
+                    "
+                />
+                <div
+                    style="
+                        display: flex;
+                        justify-content: space-between;
+                        width: 100%;
+                        margin-bottom: 50px;
+                    "
+                >
+                    <button
+                        id="add-btn"
+                        class="border-radius"
+                        style="
+                            width: 30%;
+                            height: 35px;
+                            margin: auto;
+                            font-size: 18px;
+                            background-color: #36b61f;
+                        "
+                    >
+                        Add
+                    </button>
+                    <button
+                        id="cancel-btn"
+                        class="border-radius"
+                        style="
+                            width: 30%;
+                            height: 35px;
+                            margin: auto;
+                            font-size: 18px;
+                            background-color: #ab0f0f;
+                        "
+                    >
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--/Popup div-->
+        <script src="logic.js"></script>
+    </body>
+    <script></script>
+</html>
